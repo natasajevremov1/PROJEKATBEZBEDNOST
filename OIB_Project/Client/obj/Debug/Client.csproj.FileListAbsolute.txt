@@ -1,0 +1,13 @@
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\bin\Debug\Client.exe.config
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\bin\Debug\Client.exe
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\bin\Debug\Client.pdb
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\bin\Debug\Common.dll
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\bin\Debug\Service.exe
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\bin\Debug\Common.pdb
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\bin\Debug\Service.pdb
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\bin\Debug\Service.exe.config
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\obj\Debug\Client.exe
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\obj\Debug\Client.pdb

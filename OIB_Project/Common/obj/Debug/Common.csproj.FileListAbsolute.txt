@@ -1,0 +1,6 @@
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\bin\Debug\Common.dll
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\bin\Debug\Common.pdb
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.dll
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.pdb
