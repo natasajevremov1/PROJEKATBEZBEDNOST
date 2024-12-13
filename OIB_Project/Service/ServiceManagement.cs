@@ -15,7 +15,7 @@ namespace Service
         [PrincipalPermission(SecurityAction.Demand, Role ="ExchangeSessionKey")]
         public void Connect()
         {
-            Console.WriteLine("Client successfully connected!");
+            Console.WriteLine("Client successfully connected  !");
             var sessionId = OperationContext.Current.SessionId;
             Console.WriteLine("Session id: "+sessionId);
         }
