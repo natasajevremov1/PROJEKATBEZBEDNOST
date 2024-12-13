@@ -20,6 +20,7 @@ namespace Service
             Console.WriteLine("Session id: "+sessionId);
         }
 
+        [PrincipalPermission(SecurityAction.Demand,Role ="RunService")]
         public void RunService(string ip, string port, string protocol)
         {
             if (protocol.ToLower().Equals("tcp"))
