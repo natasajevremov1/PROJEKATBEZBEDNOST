@@ -1,0 +1,1 @@
+Klijent poziva Connect sa proxy, tamo Connect zove Connect sa servera i treba da od njega dobije sessionID kako bi ovaj Connect sa proxy mogao da return-a sessionID nazad na klijentsku stranu da bi enkriptovao podatke 
