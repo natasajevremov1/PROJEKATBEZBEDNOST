@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    [ServiceContract]
+    [ServiceContract(SessionMode = SessionMode.Required)]
     public interface IServiceManagement
     {
 
