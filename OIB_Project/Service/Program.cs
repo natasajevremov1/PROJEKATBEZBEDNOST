@@ -35,6 +35,14 @@ namespace Service
             policies.Add(new CustomAuthorizationPolicy());
             host.Authorization.ExternalAuthorizationPolicies = policies.AsReadOnly();
 
+            // Podesavanje AuditBehavior-a
+            ServiceSecurityAuditBehavior newAudit = new ServiceSecurityAuditBehavior();
+            newAudit.AuditLogLocation = AuditLogLocation.Application;
+            newAudit.ServiceAuthorizationAuditLevel = AuditLevel.SuccessOrFailure;
+
+            host.Description.Behaviors.Remove<ServiceSecurityAuditBehavior>();
+            host.Description.Behaviors.Add(newAudit);
+
             host.Open();
 
             Console.WriteLine("Service process run by user: " + WindowsIdentity.GetCurrent().Name);
