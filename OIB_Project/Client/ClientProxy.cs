@@ -18,6 +18,20 @@ namespace Client
             factory = this.CreateChannel();
         }
 
+        public void AddItemToBlacklist(string type, string value)
+        {
+            try
+            {
+                factory.AddItemToBlacklist(type,value);
+                Console.WriteLine("Item is added!\n");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error : {0}", e.Message);
+            }
+        }
+
         public void Connect()
         {
             try

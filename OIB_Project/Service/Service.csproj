@@ -44,10 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceManagement.cs" />
     <Compile Include="TestService.cs" />
+    <Compile Include="Utilities\BlacklistManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
