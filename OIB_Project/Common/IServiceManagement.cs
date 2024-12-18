@@ -17,6 +17,8 @@ namespace Common
 
         [OperationContract]
         void RunService(string ip, string port, string protocol);
+        [OperationContract]
+        void AddItemToBlacklist(string type,string value);
 
 
     }

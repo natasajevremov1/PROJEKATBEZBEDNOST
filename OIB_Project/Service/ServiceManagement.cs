@@ -1,6 +1,8 @@
 ﻿using Common;
+using Service.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Permissions;
 using System.ServiceModel;
@@ -11,6 +13,10 @@ namespace Service
 {
     public class ServiceManagement : IServiceManagement
     {
+        public void AddItemToBlacklist(string type, string value)
+        {
+            Database.blacklistManager.AddToBlacklist(type, value);
+        }
 
         [PrincipalPermission(SecurityAction.Demand, Role ="ExchangeSessionKey")]
         public void Connect()
@@ -23,6 +29,15 @@ namespace Service
         [PrincipalPermission(SecurityAction.Demand,Role ="RunService")]
         public void RunService(string ip, string port, string protocol)
         {
+            Console.WriteLine($"RunService called with: IP={ip}, PORT={port}, PROTOCOL={protocol}");
+
+            BlacklistManager blacklistManager = new BlacklistManager("blacklist.txt");
+
+            if (blacklistManager.IsBlacklisted(ip, port, protocol))
+            {
+                Console.WriteLine("Access denied: One or more parameters are blacklisted.");
+                return;
+            }
             if (protocol.ToLower().Equals("tcp"))
             {
                 protocol = "net.tcp";

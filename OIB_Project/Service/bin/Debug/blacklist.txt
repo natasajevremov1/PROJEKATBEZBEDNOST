@@ -1,0 +1,6 @@
+port: 8082
+ip: 127.0.0.6
+protokol: tcp
+port: 8081
+ip: 127.0.0.5
+port: 6666

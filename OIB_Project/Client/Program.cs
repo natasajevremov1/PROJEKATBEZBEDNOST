@@ -39,8 +39,9 @@ namespace Client
                 string protocol = Console.ReadLine();
                 Console.WriteLine();
 
-                proxy.RunService(ip.Trim(), port.Trim(), protocol.Trim());
+                //proxy.RunService(ip.Trim(), port.Trim(), protocol.Trim());
 
+                proxy.AddItemToBlacklist("port", port);
                 string testAddress = $"net.{protocol}://{ip}:{port}/TestService";
                 EndpointAddress testEndPointAddress = new EndpointAddress(new Uri(testAddress), EndpointIdentity.CreateUpnIdentity("TestService"));
                 ChannelFactory<ITest> testFactory = new ChannelFactory<ITest>(binding);

@@ -1,7 +1,9 @@
 ﻿using Common;
+using Service.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Policy;
+using System.IO;
 using System.Linq;
 using System.Security.Principal;
 using System.ServiceModel;
@@ -40,6 +42,33 @@ namespace Service
             Console.WriteLine("Service process run by user: " + WindowsIdentity.GetCurrent().Name);
             Console.WriteLine("Service running...");
 
+            Console.WriteLine("\nTesting BlacklistManager...");
+
+            string blacklistFilePath = "blacklist.txt"; // Putanja do blacklist fajla
+            Console.WriteLine($"Blacklist file path: {Path.GetFullPath(blacklistFilePath)}");
+            
+           
+            
+
+            // Ispis svih lista
+            Console.WriteLine("\n--- Current Blacklists ---");
+            Console.WriteLine("Ports:");
+            foreach (var port in Database.ports)
+            {
+                Console.WriteLine($" - {port}");
+            }
+
+            Console.WriteLine("IPs:");
+            foreach (var ip in Database.ips)
+            {
+                Console.WriteLine($" - {ip}");
+            }
+
+            Console.WriteLine("Protocols:");
+            foreach (var protocol in Database.protocols)
+            {
+                Console.WriteLine($" - {protocol}");
+            }
             Console.ReadLine();
         }
     }
