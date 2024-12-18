@@ -15,6 +15,7 @@ namespace Common
             using (Aes aesAlg = Aes.Create())
             {
                 aesAlg.Key = GenerateValidKey(key);
+                aesAlg.Mode = CipherMode.CBC;
 
                 // Generiši slučajni IV
                 aesAlg.GenerateIV();
@@ -26,6 +27,7 @@ namespace Common
                 Console.WriteLine("Generisani IV (decimal): " + string.Join(", ", iv));
 
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+                
 
                 using (MemoryStream msEncrypt = new MemoryStream())
                 {
@@ -67,6 +69,7 @@ namespace Common
             {
                 aesAlg.Key = GenerateValidKey(key);
                 aesAlg.IV = iv; // Koristi IV koji je poslat sa podacima
+                aesAlg.Mode = CipherMode.CBC;
 
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
 
