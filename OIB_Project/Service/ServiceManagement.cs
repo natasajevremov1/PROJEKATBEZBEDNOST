@@ -13,6 +13,9 @@ namespace Service
 {
     public class ServiceManagement : IServiceManagement
     {
+        private readonly AESAlgorithm aes = new AESAlgorithm(); // Instanca AES algoritma
+        private string sessionId;
+
         [PrincipalPermission(SecurityAction.Demand,Role = "ModifyBlacklist")]
         public void AddItemToBlacklist(string type, string value)
         {
@@ -20,11 +23,12 @@ namespace Service
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role ="ExchangeSessionKey")]
-        public void Connect()
+        public string Connect()
         {
             Console.WriteLine("Client successfully connected!");
-            var sessionId = OperationContext.Current.SessionId;
+             sessionId = OperationContext.Current.SessionId;
             Console.WriteLine("Session id: "+sessionId);
+            return sessionId;
         }
 
         [PrincipalPermission(SecurityAction.Demand,Role ="RunService")]

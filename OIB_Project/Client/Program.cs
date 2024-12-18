@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Principal;
 using System.ServiceModel;
 using System.Text;
@@ -20,6 +21,10 @@ namespace Client
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
             binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
 
+            // Kreiraj instancu AES enkripcije
+            AESAlgorithm aes = new AESAlgorithm();
+
+
 
             Console.WriteLine("Client process run by user: " + WindowsIdentity.GetCurrent().Name);
 
@@ -27,7 +32,7 @@ namespace Client
 
             using(ClientProxy proxy = new ClientProxy(binding, endpointAddress))
             {
-                proxy.Connect();
+                
 
                 Console.Write("IP :\t");
                 string ip = Console.ReadLine();
@@ -38,6 +43,19 @@ namespace Client
                 Console.Write("PROTOCOL :\t");
                 string protocol = Console.ReadLine();
                 Console.WriteLine();
+
+                string sessionId = proxy.Connect();
+                // Enkriptuj podatke
+                string encryptedIp = aes.Encrypt(ip.Trim(), sessionId);
+                string encryptedPort = aes.Encrypt(port.Trim(), sessionId);
+                string encryptedProtocol = aes.Encrypt(protocol.Trim(), sessionId);
+
+                Console.WriteLine("\nEncrypted Data:");
+                Console.WriteLine("Encrypted IP: " + encryptedIp);
+                Console.WriteLine("Encrypted PORT: " + encryptedPort);
+                Console.WriteLine("Encrypted PROTOCOL: " + encryptedProtocol);
+
+                proxy.RunService(encryptedIp, encryptedPort, encryptedProtocol);
 
                 //proxy.RunService(ip.Trim(), port.Trim(), protocol.Trim());
 
