@@ -32,24 +32,17 @@ namespace Client
             }
         }
 
-        
-        public string Connect()
+        public void Connect()
         {
             try
             {
-                string sessionId= factory.Connect();
-                Console.WriteLine(sessionId);
-
+                factory.Connect();
                 Console.WriteLine("Connected!\n");
-                return sessionId;
 
             }catch(Exception e)
             {
                 Console.WriteLine("Error : {0}",e.Message);
-                return null;
             }
-
-            
         }
 
         public void RunService(string ip, string port, string protocol)

@@ -12,7 +12,7 @@ namespace Common
     {
 
         [OperationContract]
-        string Connect();
+        void Connect();
 
 
         [OperationContract]
