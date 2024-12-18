@@ -13,6 +13,7 @@ namespace Service
 {
     public class ServiceManagement : IServiceManagement
     {
+        [PrincipalPermission(SecurityAction.Demand,Role = "ModifyBlacklist")]
         public void AddItemToBlacklist(string type, string value)
         {
             Database.blacklistManager.AddToBlacklist(type, value);
