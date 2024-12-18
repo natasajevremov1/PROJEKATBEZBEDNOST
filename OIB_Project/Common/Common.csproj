@@ -33,7 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IdentityModel" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,25 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomAuthorizationManager.cs" />
-    <Compile Include="CustomAuthorizationPolicy.cs" />
-    <Compile Include="CustomPrincipal.cs" />
-    <Compile Include="Formatter.cs" />
+    <Compile Include="AESAlgoritham.cs" />
     <Compile Include="IServiceManagement.cs" />
     <Compile Include="ITest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RolesConfig.cs" />
-    <Compile Include="RolesConfigFile.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RolesConfigFile.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="RolesConfigFile.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>RolesConfigFile.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
