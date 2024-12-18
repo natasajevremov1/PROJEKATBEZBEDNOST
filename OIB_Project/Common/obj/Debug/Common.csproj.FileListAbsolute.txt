@@ -9,4 +9,3 @@ C:\Users\Win10\Documents\Bezbednost\PROJEKATBEZBEDNOST\OIB_Project\Common\bin\De
 C:\Users\Win10\Documents\Bezbednost\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\Win10\Documents\Bezbednost\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.dll
 C:\Users\Win10\Documents\Bezbednost\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.pdb
-C:\Users\Win10\Documents\Bezbednost\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.AssemblyReference.cache

@@ -18,17 +18,23 @@ namespace Client
             factory = this.CreateChannel();
         }
 
-        public void Connect()
+        public string Connect()
         {
             try
             {
-                factory.Connect();
+                string sessionId= factory.Connect();
+                Console.WriteLine(sessionId);
+
                 Console.WriteLine("Connected!\n");
+                return sessionId;
 
             }catch(Exception e)
             {
                 Console.WriteLine("Error : {0}",e.Message);
+                return null;
             }
+
+            
         }
 
         public void RunService(string ip, string port, string protocol)

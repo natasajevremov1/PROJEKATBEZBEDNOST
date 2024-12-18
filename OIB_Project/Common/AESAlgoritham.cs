@@ -7,10 +7,10 @@ namespace Common
 {
     public class AESAlgorithm
     {
-        private readonly string key = "thisisaverysecretkey12345"; // 32 byte key for AES-256
+      //  private readonly string key = "thisisaverysecretkey12345"; // 32 byte key for AES-256
         private readonly string iv = "thisisaverysecre"; // 16 byte IV
 
-        public string Encrypt(string plainText)
+        public string Encrypt(string plainText,string key)
         {
             using (Aes aesAlg = Aes.Create())
             {
@@ -19,6 +19,11 @@ namespace Common
                 // Generiši slučajni IV
                 aesAlg.GenerateIV();
                 byte[] iv = aesAlg.IV;  // Dobijanje generisanog IV-a
+                string ivHex = BitConverter.ToString(iv).Replace("-", " ");
+                Console.WriteLine("Generisani IV (hex): " + ivHex);
+
+                // Opcionalno: Prikaz IV-a kao decimalnih vrednosti
+                Console.WriteLine("Generisani IV (decimal): " + string.Join(", ", iv));
 
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
 
@@ -46,7 +51,7 @@ namespace Common
             }
         }
 
-        public string Decrypt(string cipherText)
+        public string Decrypt(string cipherText,string key)
         {
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
 
