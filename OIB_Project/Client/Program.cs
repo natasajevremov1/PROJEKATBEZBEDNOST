@@ -35,32 +35,21 @@ namespace Client
             Console.Write("PROTOCOL :\t");
             string protocol = Console.ReadLine();
 
-            // Enkriptuj podatke
-            string encryptedIp = aes.Encrypt(ip.Trim());
-            string encryptedPort = aes.Encrypt(port.Trim());
-            string encryptedProtocol = aes.Encrypt(protocol.Trim());
-
-            Console.WriteLine("\nEncrypted Data:");
-            Console.WriteLine("Encrypted IP: " + encryptedIp);
-            Console.WriteLine("Encrypted PORT: " + encryptedPort);
-            Console.WriteLine("Encrypted PROTOCOL: " + encryptedProtocol);
-
+            
             // Kreiraj proxy i poveži se sa serverom
             using (ClientProxy proxy = new ClientProxy(binding, endpointAddress))
             {
-                proxy.Connect();
+               string sessionId= proxy.Connect();
+                // Enkriptuj podatke
+                string encryptedIp = aes.Encrypt(ip.Trim(),sessionId);
+                string encryptedPort = aes.Encrypt(port.Trim(),sessionId);
+                string encryptedProtocol = aes.Encrypt(protocol.Trim(), sessionId);
 
-                Console.Write("IP :\t");
-                string ip = Console.ReadLine();
-                Console.WriteLine();
-                Console.Write("PORT :\t");
-                string port = Console.ReadLine();
-                Console.WriteLine();
-                Console.Write("PROTOCOL :\t");
-                string protocol = Console.ReadLine();
-                Console.WriteLine();
+                Console.WriteLine("\nEncrypted Data:");
+                Console.WriteLine("Encrypted IP: " + encryptedIp);
+                Console.WriteLine("Encrypted PORT: " + encryptedPort);
+                Console.WriteLine("Encrypted PROTOCOL: " + encryptedProtocol);
 
-                //proxy.RunService(ip.Trim(), port.Trim(), protocol.Trim());
                 proxy.RunService(encryptedIp, encryptedPort, encryptedProtocol);
 
                 proxy.AddItemToBlacklist("port", port);
