@@ -45,9 +45,9 @@ namespace Service
                 Console.WriteLine($"Decrypted IP: {ip}");
                 Console.WriteLine($"Decrypted Port: {port}");
                 Console.WriteLine($"Decrypted Protocol: {protocol}");
-                BlacklistManager blacklistManager = new BlacklistManager("blacklist.txt");
+               
 
-            if (blacklistManager.IsBlacklisted(ip, port, protocol))
+            if (Database.blacklistManager.IsBlacklisted(ip, port, protocol))
             {
                 Console.WriteLine("Access denied: One or more parameters are blacklisted.");
                 return;
