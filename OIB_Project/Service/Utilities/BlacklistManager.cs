@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO; // Dodaj na vrh ako nije već dodato
+using System.Threading;
+using System.Security.Cryptography;
+
 namespace Service.Utilities
 {
    public class BlacklistManager
@@ -46,7 +49,7 @@ namespace Service.Utilities
         public void AddToBlacklist(string type, string value)
         {
              value = value.Trim();
-            Database.CheckBlacklist();
+           CheckBlacklist();
 
 
             try
@@ -73,7 +76,7 @@ namespace Service.Utilities
             }
             finally
             {
-                Database.fileChecksum = Database.Checksum();
+                Database.fileChecksum = Checksum();
             }
         }
 
@@ -128,6 +131,50 @@ namespace Service.Utilities
                 Console.WriteLine($"Error while rewriting file: {ex.Message}");
             }
         }
-        
+
+        public static byte[] Checksum()
+        {
+            try
+            {
+                using (var md5 = MD5.Create())
+                {
+                    using (var stream = File.OpenRead("blacklist.txt"))
+                    {
+                        return md5.ComputeHash(stream);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static void CheckBlacklist()
+        {
+            var thread = new Thread(() =>
+            {
+                while (true)
+                {
+                    Thread.Sleep(5000);
+                    lock (Database.fileChecksum)
+                    {
+                        byte[] help = Checksum();
+                        for (int i = 0; i < Database.fileChecksum.Length; i++)
+                        {
+                            if (Database.fileChecksum[i] != help[i])
+                            {
+                                Console.WriteLine("Unauthorised blacklist file corrupted, Admin reaction REQUIRED!!!");
+                                break;
+                            }
+                        }
+                    }
+                }
+            });
+
+            thread.Start();
+        }
+
     }
 }

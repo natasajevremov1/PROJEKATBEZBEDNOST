@@ -29,48 +29,6 @@ namespace Service
             
         }
 
-        public static byte[] Checksum()
-        {
-            try
-            {
-                using (var md5 = MD5.Create())
-                {
-                    using (var stream = File.OpenRead("blacklist.txt"))
-                    {
-                        return md5.ComputeHash(stream);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                throw;
-            }
-        }
-
-        public static void CheckBlacklist()
-        {
-            var thread = new Thread(() =>
-            {
-                while (true)
-                {
-                    Thread.Sleep(5000);
-                    lock (fileChecksum)
-                    {
-                        byte[] help = Checksum();
-                        for (int i = 0; i < fileChecksum.Length; i++)
-                        {
-                            if (fileChecksum[i] != help[i])
-                            {
-                                Console.WriteLine("Unauthorised blacklist file corrupted, Admin reaction REQUIRED!!!");
-                                break;
-                            }
-                        }
-                    }
-                }
-            });
-
-            thread.Start();
-        }
+       
     }
 }
