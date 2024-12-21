@@ -46,29 +46,35 @@ namespace Service.Utilities
         public void AddToBlacklist(string type, string value)
         {
              value = value.Trim();
+            Database.CheckBlacklist();
 
-    try
-    {
-        if (type.ToLower() == "port" && !Database.ports.Contains(value))
-        {
-            Database.ports.Add(value);
-            AppendToFile("port", value);
-        }
-        else if (type.ToLower() == "ip" && !Database.ips.Contains(value))
-        {
-            Database.ips.Add(value);
-            AppendToFile("ip", value);
-        }
-        else if (type.ToLower() == "protokol" && !Database.protocols.Contains(value))
-        {
-            Database.protocols.Add(value);
-            AppendToFile("protokol", value);
-        }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Error while adding to blacklist: {ex.Message}");
-    }
+
+            try
+            {
+                if (type.ToLower() == "port" && !Database.ports.Contains(value))
+                {
+                    Database.ports.Add(value);
+                    AppendToFile("port", value);
+                }
+                else if (type.ToLower() == "ip" && !Database.ips.Contains(value))
+                {
+                    Database.ips.Add(value);
+                    AppendToFile("ip", value);
+                }
+                else if (type.ToLower() == "protokol" && !Database.protocols.Contains(value))
+                {
+                    Database.protocols.Add(value);
+                    AppendToFile("protokol", value);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error while adding to blacklist: {ex.Message}");
+            }
+            finally
+            {
+                Database.fileChecksum = Database.Checksum();
+            }
         }
 
         // Brisanje iz fajla i liste
