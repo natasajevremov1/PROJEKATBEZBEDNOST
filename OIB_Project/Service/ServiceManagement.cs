@@ -52,11 +52,19 @@ namespace Service
                 Console.WriteLine("Access denied: One or more parameters are blacklisted.");
                 return;
             }
+
+                
            
     
 
                 NetTcpBinding binding = new NetTcpBinding();
                 string address = $"net.{protocol}://{ip}:{port}/TestService";
+
+                if (Database.openHosts.ContainsKey(address))
+                {
+                    Console.WriteLine("Host with that address already exists\n\n");
+                    return;
+                }
 
                 binding.Security.Mode = SecurityMode.Transport;
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
@@ -67,14 +75,53 @@ namespace Service
                 host.AddServiceEndpoint(typeof(ITest), binding, address);
 
                 host.Open();
+                Database.openHosts.Add(address, host);
 
                 Console.WriteLine("Port running");
+
+               
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error during decryption or service run: " + ex.Message);
             }
 
+        }
+
+        public void StopService(string encryptedIp,string encryptedPort, string encryptedProtocol)
+        {
+
+            try
+            {
+                // Dekriptuji podatke
+                string ip = aes.Decrypt(encryptedIp, sessionId);
+                string port = aes.Decrypt(encryptedPort, sessionId);
+                string protocol = aes.Decrypt(encryptedProtocol, sessionId);
+
+                string address = $"net.{protocol}://{ip}:{port}/TestService";
+
+                ServiceHost host = null;
+                if (Database.openHosts.TryGetValue(address, out host))
+                {
+                    host.Close();
+                    Database.openHosts.Remove(address);
+                    Console.WriteLine("Host with address " + address + " is closed!\n\n");
+                }
+                else
+                {
+                    Console.WriteLine("Host with address " + address + " is not existing!\n\n");
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error during decryption or service close: " + ex.Message);
+            }
+
+
+            
         }
     }
 }

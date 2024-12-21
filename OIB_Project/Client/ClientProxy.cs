@@ -58,5 +58,17 @@ namespace Client
                 Console.WriteLine("Error : {0}", e.Message);
             }
         }
+
+        public void StopService(string ip, string port, string protocol)
+        {
+            try
+            {
+                factory.StopService(ip, port, protocol);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error : {0}", e.Message);
+            }
+        }
     }
 }

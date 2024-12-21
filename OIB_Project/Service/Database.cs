@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Service
         public static List<string> ips = new List<string>();
         public static List<string> protocols = new List<string>();
         public static byte[] fileChecksum = null;
+        public static Dictionary<string, ServiceHost> openHosts = new Dictionary<string, ServiceHost>();
 
         static Database() 
         {
