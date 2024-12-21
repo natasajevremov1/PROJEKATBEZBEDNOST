@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Service
@@ -45,15 +46,40 @@ namespace Service
                 Console.WriteLine($"Decrypted IP: {ip}");
                 Console.WriteLine($"Decrypted Port: {port}");
                 Console.WriteLine($"Decrypted Protocol: {protocol}");
+
+                CustomPrincipal principal = Thread.CurrentPrincipal as CustomPrincipal;
+                string userName = Formatter.ParseName(principal.Identity.Name);
+
+                //try
+                //{
+                //    Audit.RunServiceSuccess(userName);
+                //    Console.WriteLine("RunService successfully executed.");
+
+                //}
+                //catch (Exception e)
+                //{
+                //    Console.WriteLine(e.Message);
+                //}
                
 
-            if (Database.blacklistManager.IsBlacklisted(ip, port, protocol))
-            {
-                Console.WriteLine("Access denied: One or more parameters are blacklisted.");
-                return;
-            }
+                if (Database.blacklistManager.IsBlacklisted(ip, port, protocol))
+                {
+                    try
+                    {
+                        Audit.RunServiceFailed(userName);
+                        Console.WriteLine("Access denied: One or more parameters are blacklisted.");
+                        return;
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+
+                    // Console.WriteLine("Access denied: One or more parameters are blacklisted.");
+                    // return;
+                }
            
-    
+                
 
                 NetTcpBinding binding = new NetTcpBinding();
                 string address = $"net.{protocol}://{ip}:{port}/TestService";
@@ -72,7 +98,21 @@ namespace Service
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error during decryption or service run: " + ex.Message);
+                CustomPrincipal principal = Thread.CurrentPrincipal as CustomPrincipal;
+                string userName = Formatter.ParseName(principal.Identity.Name);
+
+                try
+                {
+                    Audit.RunServiceFailed(userName);
+                    Console.WriteLine("Error during decryption or service run: " + ex.Message);
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+                // Console.WriteLine("Error during decryption or service run: " + ex.Message);
             }
 
         }

@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AESAlgorithm.cs" />
+    <Compile Include="Audit.cs" />
+    <Compile Include="AuditEventFile.Designer.cs" />
+    <Compile Include="AuditEvents.cs" />
     <Compile Include="CustomAuthorizationManager.cs" />
     <Compile Include="CustomAuthorizationPolicy.cs" />
     <Compile Include="CustomPrincipal.cs" />
@@ -59,6 +62,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AuditEventFile.resx" />
     <EmbeddedResource Include="RolesConfigFile.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RolesConfigFile.Designer.cs</LastGenOutput>

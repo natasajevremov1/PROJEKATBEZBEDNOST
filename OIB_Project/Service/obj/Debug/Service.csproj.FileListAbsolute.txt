@@ -18,3 +18,13 @@ C:\Users\MilanPC\Desktop\OIB\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Se
 C:\Users\MilanPC\Desktop\OIB\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.csproj.CopyComplete
 C:\Users\MilanPC\Desktop\OIB\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.exe
 C:\Users\MilanPC\Desktop\OIB\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.pdb
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Service.exe.config
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Service.exe
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Service.pdb
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Common.dll
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Common.pdb
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.csproj.AssemblyReference.cache
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.csproj.CopyComplete
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.exe
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.pdb
