@@ -39,3 +39,5 @@ D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Client\obj\Debug\Client.csproj.Assembl
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Client\obj\Debug\Client.csproj.CopyComplete
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Client\obj\Debug\Client.exe
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Client\obj\Debug\Client.pdb
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\bin\Debug\Manager.dll
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Client\bin\Debug\Manager.pdb

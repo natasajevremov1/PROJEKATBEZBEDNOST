@@ -1,6 +1,5 @@
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\bin\Debug\Common.dll
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\bin\Debug\Common.pdb
-C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.AssemblyReference.cache
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.dll
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.pdb
@@ -21,3 +20,4 @@ D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.CoreCom
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.dll
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.pdb
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.AuditEventFile.resources

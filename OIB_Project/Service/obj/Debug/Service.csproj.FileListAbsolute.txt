@@ -30,3 +30,5 @@ D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.csproj.Assem
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.csproj.CopyComplete
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.exe
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.pdb
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Manager.dll
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Manager.pdb
