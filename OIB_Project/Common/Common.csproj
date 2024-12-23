@@ -51,6 +51,7 @@
     <Compile Include="CustomAuthorizationPolicy.cs" />
     <Compile Include="CustomPrincipal.cs" />
     <Compile Include="Formatter.cs" />
+    <Compile Include="IAudit.cs" />
     <Compile Include="IServiceManagement.cs" />
     <Compile Include="ITest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

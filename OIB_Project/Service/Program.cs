@@ -1,10 +1,12 @@
 ﻿using Common;
+using Manager;
 using Service.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Policy;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.ServiceModel;
 using System.ServiceModel.Description;
@@ -15,16 +17,24 @@ namespace Service
 {
     class Program
     {
+
+        public static IAudit auditProxy = null;
+
         static void Main(string[] args)
         {
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:9999/ServiceManagement";
+
+            auditProxy = ConnectAudit();
 
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
             binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
 
             ServiceHost host = new ServiceHost(typeof(ServiceManagement));
+
+            host.Description.Behaviors.Remove(typeof(ServiceDebugBehavior));
+            host.Description.Behaviors.Add(new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
 
             host.AddServiceEndpoint(typeof(IServiceManagement), binding, address);
 
@@ -37,13 +47,7 @@ namespace Service
             policies.Add(new CustomAuthorizationPolicy());
             host.Authorization.ExternalAuthorizationPolicies = policies.AsReadOnly();
 
-            // Podesavanje AuditBehavior-a
-            ServiceSecurityAuditBehavior newAudit = new ServiceSecurityAuditBehavior();
-            newAudit.AuditLogLocation = AuditLogLocation.Application;
-            newAudit.ServiceAuthorizationAuditLevel = AuditLevel.SuccessOrFailure;
 
-            host.Description.Behaviors.Remove<ServiceSecurityAuditBehavior>();
-            host.Description.Behaviors.Add(newAudit);
 
             host.Open();
 
@@ -78,6 +82,18 @@ namespace Service
                 Console.WriteLine($" - {protocol}");
             }
             Console.ReadLine();
+        }
+
+        static WCFAuditClient ConnectAudit()
+        {
+            /// Define the expected service certificate. It is required to establish cmmunication using certificates.
+            string srvCertCN = "wcfAudit";
+            NetTcpBinding binding = new NetTcpBinding();
+            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
+            X509Certificate2 srvCert = CertManager.GetCertificateFromStorage(StoreName.TrustedPeople, StoreLocation.LocalMachine, srvCertCN);
+            EndpointAddress address = new EndpointAddress(new Uri("net.tcp://localhost:8082/Audit"),
+                                      new X509CertificateEndpointIdentity(srvCert));
+            return new WCFAuditClient(binding, address);
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Service
             Console.WriteLine("Client successfully connected!");
              sessionId = OperationContext.Current.SessionId;
             Console.WriteLine("Session id: "+sessionId);
+            Program.auditProxy.LogEvent(32, "Test");
             return sessionId;
         }
 
