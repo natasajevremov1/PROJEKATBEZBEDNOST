@@ -11,7 +11,9 @@ namespace Common
     public enum AuditEventTypes
     {
         RunServiceSuccess = 0,
-        RunServiceFailed = 1
+        RunServiceFailed = 1,
+        DOSAttackDetected = 2,
+        ChangedBlacklistFile = 3
     }
     class AuditEvents
     {
@@ -49,6 +51,16 @@ namespace Common
             {
                 return ResourceMgr.GetString(AuditEventTypes.RunServiceFailed.ToString());
             }
+        }
+
+        public static string DOSAttackDetected
+        {
+            get { return ResourceMgr.GetString(AuditEventTypes.DOSAttackDetected.ToString()); }
+        }
+
+        public static string ChangedBlacklistFile
+        {
+            get { return ResourceMgr.GetString(AuditEventTypes.ChangedBlacklistFile.ToString()); }
         }
     }
 }

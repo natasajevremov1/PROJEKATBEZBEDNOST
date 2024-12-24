@@ -62,6 +62,33 @@ namespace Common
                 throw new ArgumentException(string.Format("Error while trying to write event (eventId = {0}) to event log.", (int)AuditEventTypes.RunServiceFailed));
             }
         }
+
+        public static void DOSAttackDetected(string username)
+        {
+            if (customLog != null)
+            {
+                string DoSAttackDetected = AuditEvents.DOSAttackDetected;
+                string message = String.Format(DoSAttackDetected, username);
+                customLog.WriteEntry(message);
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("Error while trying to write event (eventid = {0}) to event log.", (int)AuditEventTypes.DOSAttackDetected));
+            }
+        }
+
+        public static void ChangedBlacklistFile()
+        {
+            if (customLog != null)
+            {
+                string message = AuditEvents.ChangedBlacklistFile;
+                customLog.WriteEntry(message);
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("Error while trying to write event (eventid = {0}) to event log.", (int)AuditEventTypes.ChangedBlacklistFile));
+            }
+        }
         public void Dispose()
         {
             if(customLog != null)

@@ -29,7 +29,7 @@ namespace Service
             Console.WriteLine("Client successfully connected!");
              sessionId = OperationContext.Current.SessionId;
             Console.WriteLine("Session id: "+sessionId);
-            Program.auditProxy.LogEvent(32, "Test");
+            // Program.auditProxy.LogEvent(32, "Test");
             return sessionId;
         }
 
@@ -67,7 +67,7 @@ namespace Service
                 {
                     try
                     {
-                        Audit.RunServiceFailed(userName);
+                        Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceFailed, userName);
                         Console.WriteLine("Access denied: One or more parameters are blacklisted.");
                         return;
                     }
@@ -95,6 +95,8 @@ namespace Service
 
                 host.Open();
 
+                Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceSuccess, userName);
+
                 Console.WriteLine("Port running");
             }
             catch (Exception ex)
@@ -104,7 +106,7 @@ namespace Service
 
                 try
                 {
-                    Audit.RunServiceFailed(userName);
+                    Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceFailed, userName);
                     Console.WriteLine("Error during decryption or service run: " + ex.Message);
 
                 }
