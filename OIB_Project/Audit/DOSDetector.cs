@@ -14,7 +14,7 @@ namespace Audit
         
         public static IAudit auditProxy;
         public int allowedNumberOfDOSAttacks = 2;
-        public int DOSInterval = 12;
+        public int DOSInterval = 160;
         public static Dictionary<string, int> DOSTracker;
 
         public DOSDetector()

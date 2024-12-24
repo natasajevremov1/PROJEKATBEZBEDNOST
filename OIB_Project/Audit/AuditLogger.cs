@@ -36,10 +36,14 @@ namespace Audit
                         message = $"User {userName} failed to run service.";
                         lock (DOSDetector.DOSTracker)
                         {
+                            if (!DOSDetector.DOSTracker.ContainsKey(userName))
+                            {
+                                DOSDetector.DOSTracker[userName] = 0;
+                            }
                             DOSDetector.DOSTracker[userName]++;
-                            Console.WriteLine(DOSDetector.DOSTracker[userName]);
+                            Console.WriteLine($"DOS tracker for {userName}: {DOSDetector.DOSTracker[userName]}");
                         }
-                        
+
                     }
                     catch(Exception e)
                     {
