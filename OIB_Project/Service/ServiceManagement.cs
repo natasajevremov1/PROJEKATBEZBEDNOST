@@ -1,14 +1,17 @@
-﻿using Common;
+﻿using Audit;
+using Common;
 using Service.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Permissions;
+using System.Security.Principal;
 using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
 
 namespace Service
 {
@@ -24,17 +27,19 @@ namespace Service
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role ="ExchangeSessionKey")]
-        public string Connect()
+        public string Connect(string userName)
         {
             Console.WriteLine("Client successfully connected!");
              sessionId = OperationContext.Current.SessionId;
             Console.WriteLine("Session id: "+sessionId);
-            // Program.auditProxy.LogEvent(32, "Test");
+            // string userName = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
+            Program.auditProxy.LogEvent((int)AuditEventTypes.ConnectionSuccess, userName);
+         
             return sessionId;
         }
 
         [PrincipalPermission(SecurityAction.Demand,Role ="RunService")]
-        public void RunService(string encryptedIp, string encryptedPort, string encryptedProtocol)
+        public void RunService(string encryptedIp, string encryptedPort, string encryptedProtocol, string userName)
         {
 
             try
@@ -49,24 +54,14 @@ namespace Service
                 Console.WriteLine($"Decrypted Protocol: {protocol}");
 
                 CustomPrincipal principal = Thread.CurrentPrincipal as CustomPrincipal;
-                string userName = Formatter.ParseName(principal.Identity.Name);
-
-                //try
-                //{
-                //    Audit.RunServiceSuccess(userName);
-                //    Console.WriteLine("RunService successfully executed.");
-
-                //}
-                //catch (Exception e)
-                //{
-                //    Console.WriteLine(e.Message);
-                //}
+                // string userName = Formatter.ParseName(principal.Identity.Name);
                
 
                 if (Database.blacklistManager.IsBlacklisted(ip, port, protocol))
                 {
                     try
                     {
+                        
                         Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceFailed, userName);
                         Console.WriteLine("Access denied: One or more parameters are blacklisted.");
                         return;
@@ -102,7 +97,7 @@ namespace Service
             catch (Exception ex)
             {
                 CustomPrincipal principal = Thread.CurrentPrincipal as CustomPrincipal;
-                string userName = Formatter.ParseName(principal.Identity.Name);
+                // string userName = Formatter.ParseName(principal.Identity.Name);
 
                 try
                 {

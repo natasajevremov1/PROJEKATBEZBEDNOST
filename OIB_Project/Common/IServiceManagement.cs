@@ -12,11 +12,11 @@ namespace Common
     {
 
         [OperationContract]
-        string Connect();
+        string Connect(string userName);
 
 
         [OperationContract]
-        void RunService(string ip, string port, string protocol);
+        void RunService(string ip, string port, string protocol, string userName);
         [OperationContract]
         void AddItemToBlacklist(string type,string value);
 

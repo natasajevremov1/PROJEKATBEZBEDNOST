@@ -120,6 +120,9 @@
   <data name="ChangedBlacklistFile" xml:space="preserve">
     <value>Blacklist file changed in an illegal way</value>
   </data>
+  <data name="ConnectionSuccess" xml:space="preserve">
+    <value>User {0} connected successfully.</value>
+  </data>
   <data name="DOSAttackDetected" xml:space="preserve">
     <value>Denial of Service attack attempted by user: {0}</value>
   </data>

@@ -21,7 +21,6 @@ namespace Audit
                     {
                         Common.Audit.RunServiceSuccess(userName);
                         message = $"User {userName} started service successfully.";
-                        Console.WriteLine(message);
                     }
                     catch (Exception e)
                     {
@@ -35,6 +34,12 @@ namespace Audit
                     {
                         Common.Audit.RunServiceFailed(userName);
                         message = $"User {userName} failed to run service.";
+                        lock (DOSDetector.DOSTracker)
+                        {
+                            DOSDetector.DOSTracker[userName]++;
+                            Console.WriteLine(DOSDetector.DOSTracker[userName]);
+                        }
+                        
                     }
                     catch(Exception e)
                     {
@@ -63,6 +68,30 @@ namespace Audit
                         message = $"blacklist.txt file changed in an illegal way!";
                     }
                     catch(Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    break;
+
+                case 4:
+
+                    try
+                    {
+                        Common.Audit.ConnectionSuccess(userName);
+                        message = $"{userName} connected successfully.";
+                        lock (DOSDetector.DOSTracker)
+                        {
+                            if (!DOSDetector.DOSTracker.ContainsKey(userName))
+                            {
+                                DOSDetector.DOSTracker.Add(userName, 0);
+                            }
+                            else
+                            {
+                                Console.WriteLine("User already exists in DOSTracker.");
+                            }
+                        }
+                    }
+                    catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
                     }

@@ -63,6 +63,22 @@ namespace Common
             }
         }
 
+        public static void ConnectionSuccess(string userName)
+        {
+            if (customLog != null)
+            {
+                string ConnestionSuccess =
+                    AuditEvents.ConnectionSuccess;
+                string message = String.Format(ConnestionSuccess, userName);
+
+                customLog.WriteEntry(message);
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("Error while trying to write event (eventId = {0}) to event log.", (int)AuditEventTypes.ConnectionSuccess));
+            }
+        }
+
         public static void DOSAttackDetected(string username)
         {
             if (customLog != null)

@@ -9,10 +9,11 @@ using Manager;
 
 namespace Audit
 {
-    class DOSDetector
+    public class DOSDetector
     {
+        
         public static IAudit auditProxy;
-        public int allowedNumberOfDOSAttacks = 3;
+        public int allowedNumberOfDOSAttacks = 2;
         public int DOSInterval = 12;
         public static Dictionary<string, int> DOSTracker;
 
@@ -37,9 +38,10 @@ namespace Audit
                             {
                                 user = (DOSTracker.ElementAt(i)).Key;
 
+
                                 if((DOSTracker.ElementAt(i)).Value > allowedNumberOfDOSAttacks)
                                 {
-                                    auditProxy.LogEvent((int)AuditEventTypes.DOSAttackDetected, user);
+                                    Common.Audit.DOSAttackDetected(user);
                                     DOSTracker[user] = 0;
                                     Console.WriteLine($"Denial of Service(DOS) attack attempted by user: {user}");
                                 }

@@ -20,4 +20,3 @@ D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.Generat
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.dll
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.pdb
-D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.AssemblyReference.cache

@@ -17,6 +17,10 @@ namespace Audit
     {
         static void Main(string[] args)
         {
+			DOSDetector detector = new DOSDetector();
+
+			detector.DOSAttackDetection();
+
 			string srvCertCN = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
 
 			NetTcpBinding binding = new NetTcpBinding();

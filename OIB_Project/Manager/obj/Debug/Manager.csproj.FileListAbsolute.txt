@@ -1,9 +1,9 @@
-D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.csproj.AssemblyReference.cache
-D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.csproj.CoreCompileInputs.cache
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Manager\bin\Debug\Manager.dll
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Manager\bin\Debug\Manager.pdb
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Manager\bin\Debug\Common.dll
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Manager\bin\Debug\Common.pdb
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.csproj.AssemblyReference.cache
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.csproj.CoreCompileInputs.cache
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.csproj.CopyComplete
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.dll
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.pdb

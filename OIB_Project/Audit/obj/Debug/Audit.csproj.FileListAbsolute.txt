@@ -1,5 +1,3 @@
-D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.csproj.AssemblyReference.cache
-D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.csproj.CoreCompileInputs.cache
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Audit.exe.config
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Audit.exe
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Audit.pdb
@@ -7,6 +5,8 @@ D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Common.dll
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Manager.dll
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Common.pdb
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Manager.pdb
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.csproj.AssemblyReference.cache
+D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.csproj.CoreCompileInputs.cache
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.csproj.CopyComplete
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.exe
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.pdb

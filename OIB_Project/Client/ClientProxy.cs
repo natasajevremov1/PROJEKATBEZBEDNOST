@@ -32,11 +32,11 @@ namespace Client
             }
         }
 
-        public string Connect()
+        public string Connect(string userName)
         {
             try
             {
-                string sessionId = factory.Connect();
+                string sessionId = factory.Connect(userName);
                 Console.WriteLine("Connected!\n");
                 return sessionId;
 
@@ -48,11 +48,11 @@ namespace Client
             }
         }
 
-        public void RunService(string ip, string port, string protocol)
+        public void RunService(string ip, string port, string protocol, string userName)
         {
             try
             {
-                factory.RunService(ip, port, protocol);
+                factory.RunService(ip, port, protocol, userName);
             }catch(Exception e)
             {
                 Console.WriteLine("Error : {0}", e.Message);

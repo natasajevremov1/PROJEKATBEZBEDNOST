@@ -13,7 +13,8 @@ namespace Common
         RunServiceSuccess = 0,
         RunServiceFailed = 1,
         DOSAttackDetected = 2,
-        ChangedBlacklistFile = 3
+        ChangedBlacklistFile = 3,
+        ConnectionSuccess = 4
     }
     class AuditEvents
     {
@@ -61,6 +62,12 @@ namespace Common
         public static string ChangedBlacklistFile
         {
             get { return ResourceMgr.GetString(AuditEventTypes.ChangedBlacklistFile.ToString()); }
+        }
+
+        public static string ConnectionSuccess
+        {
+            get { return ResourceMgr.GetString(AuditEventTypes.ConnectionSuccess.ToString()); }
+
         }
     }
 }
