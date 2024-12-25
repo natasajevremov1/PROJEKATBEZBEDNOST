@@ -10,8 +10,8 @@ namespace Common
     public class Audit : IDisposable
     {
         private static EventLog customLog = null;
-        const string SourceName = "Common.Audit";
-        const string LogName = "MySecTest";
+        const string SourceName = "Audit";
+        const string LogName = "Application";
 
         static Audit()
         {
