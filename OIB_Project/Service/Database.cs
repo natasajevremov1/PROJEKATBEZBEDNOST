@@ -24,8 +24,8 @@ namespace Service
         {
             
             blacklistManager.LoadBlacklist();
-            fileChecksum = Checksum();
-            CheckBlacklist();
+            fileChecksum = BlacklistManager.Checksum();
+            BlacklistManager.CheckBlacklist();
             
         }
 
