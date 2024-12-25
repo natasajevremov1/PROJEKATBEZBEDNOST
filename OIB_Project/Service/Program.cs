@@ -50,6 +50,7 @@ namespace Service
 
 
             host.Open();
+            Database.openHosts.Add(address, host);
 
             Console.WriteLine("Service process run by user: " + WindowsIdentity.GetCurrent().Name);
             Console.WriteLine("Service running...");

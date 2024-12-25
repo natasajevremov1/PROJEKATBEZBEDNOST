@@ -1,4 +1,4 @@
-﻿using Audit;
+using Audit;
 using Common;
 using Service.Utilities;
 using System;
@@ -80,6 +80,12 @@ namespace Service
                 NetTcpBinding binding = new NetTcpBinding();
                 string address = $"net.{protocol}://{ip}:{port}/TestService";
 
+                if (Database.openHosts.ContainsKey(address))
+                {
+                    Console.WriteLine("Host with that address already exists\n\n");
+                    return;
+                }
+
                 binding.Security.Mode = SecurityMode.Transport;
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
                 binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
@@ -89,10 +95,13 @@ namespace Service
                 host.AddServiceEndpoint(typeof(ITest), binding, address);
 
                 host.Open();
+                Database.openHosts.Add(address, host);
 
                 Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceSuccess, userName);
 
                 Console.WriteLine("Port running");
+
+               
             }
             catch (Exception ex)
             {
@@ -113,6 +122,42 @@ namespace Service
                 // Console.WriteLine("Error during decryption or service run: " + ex.Message);
             }
 
+        }
+
+        public void StopService(string encryptedIp,string encryptedPort, string encryptedProtocol)
+        {
+
+            try
+            {
+                // Dekriptuji podatke
+                string ip = aes.Decrypt(encryptedIp, sessionId);
+                string port = aes.Decrypt(encryptedPort, sessionId);
+                string protocol = aes.Decrypt(encryptedProtocol, sessionId);
+
+                string address = $"net.{protocol}://{ip}:{port}/TestService";
+
+                ServiceHost host = null;
+                if (Database.openHosts.TryGetValue(address, out host))
+                {
+                    host.Close();
+                    Database.openHosts.Remove(address);
+                    Console.WriteLine("Host with address " + address + " is closed!\n\n");
+                }
+                else
+                {
+                    Console.WriteLine("Host with address " + address + " is not existing!\n\n");
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error during decryption or service close: " + ex.Message);
+            }
+
+
+            
         }
     }
 }

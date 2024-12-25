@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO; // Dodaj na vrh ako nije već dodato
+using System.Threading;
+using System.Security.Cryptography;
+
 namespace Service.Utilities
 {
    public class BlacklistManager
@@ -46,29 +49,35 @@ namespace Service.Utilities
         public void AddToBlacklist(string type, string value)
         {
              value = value.Trim();
+           CheckBlacklist();
 
-    try
-    {
-        if (type.ToLower() == "port" && !Database.ports.Contains(value))
-        {
-            Database.ports.Add(value);
-            AppendToFile("port", value);
-        }
-        else if (type.ToLower() == "ip" && !Database.ips.Contains(value))
-        {
-            Database.ips.Add(value);
-            AppendToFile("ip", value);
-        }
-        else if (type.ToLower() == "protokol" && !Database.protocols.Contains(value))
-        {
-            Database.protocols.Add(value);
-            AppendToFile("protokol", value);
-        }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Error while adding to blacklist: {ex.Message}");
-    }
+
+            try
+            {
+                if (type.ToLower() == "port" && !Database.ports.Contains(value))
+                {
+                    Database.ports.Add(value);
+                    AppendToFile("port", value);
+                }
+                else if (type.ToLower() == "ip" && !Database.ips.Contains(value))
+                {
+                    Database.ips.Add(value);
+                    AppendToFile("ip", value);
+                }
+                else if (type.ToLower() == "protokol" && !Database.protocols.Contains(value))
+                {
+                    Database.protocols.Add(value);
+                    AppendToFile("protokol", value);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error while adding to blacklist: {ex.Message}");
+            }
+            finally
+            {
+                Database.fileChecksum = Checksum();
+            }
         }
 
         // Brisanje iz fajla i liste
@@ -122,6 +131,50 @@ namespace Service.Utilities
                 Console.WriteLine($"Error while rewriting file: {ex.Message}");
             }
         }
-        
+
+        public static byte[] Checksum()
+        {
+            try
+            {
+                using (var md5 = MD5.Create())
+                {
+                    using (var stream = File.OpenRead("blacklist.txt"))
+                    {
+                        return md5.ComputeHash(stream);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static void CheckBlacklist()
+        {
+            var thread = new Thread(() =>
+            {
+                while (true)
+                {
+                    Thread.Sleep(5000);
+                    lock (Database.fileChecksum)
+                    {
+                        byte[] help = Checksum();
+                        for (int i = 0; i < Database.fileChecksum.Length; i++)
+                        {
+                            if (Database.fileChecksum[i] != help[i])
+                            {
+                                Console.WriteLine("Unauthorised blacklist file corrupted, Admin reaction REQUIRED!!!");
+                                break;
+                            }
+                        }
+                    }
+                }
+            });
+
+            thread.Start();
+        }
+
     }
 }
