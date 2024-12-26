@@ -11,7 +11,7 @@ namespace Common
     {
         private static EventLog customLog = null;
         const string SourceName = "Audit";
-        const string LogName = "Application";
+        const string LogName = "MyOIBLogs";
 
         static Audit()
         {
