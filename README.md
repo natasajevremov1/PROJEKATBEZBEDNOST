@@ -45,7 +45,7 @@ Ako problem i dalje postoji:
 1. Otvorite **Registry Editor**.
 2. Navigirajte do putanje:
    ```
-   Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application
+   Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\MyOIBLogs
    ```
 3. Dodajte novi **Key** i nazovite ga `Audit`.
 4. Unutar njega:
