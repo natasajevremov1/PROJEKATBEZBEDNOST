@@ -16,3 +16,12 @@ C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\o
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.csproj.CopyComplete
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.dll
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.pdb
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\bin\Debug\Manager.dll
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\bin\Debug\Manager.pdb
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\bin\Debug\Common.dll
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\bin\Debug\Common.pdb
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.csproj.AssemblyReference.cache
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.csproj.CoreCompileInputs.cache
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.csproj.CopyComplete
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.dll
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Manager\obj\Debug\Manager.pdb

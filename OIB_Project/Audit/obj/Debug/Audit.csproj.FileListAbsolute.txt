@@ -22,3 +22,15 @@ C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.csproj.CopyComplete
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.exe
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.pdb
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Audit.exe.config
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Audit.exe
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Audit.pdb
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Common.dll
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Manager.dll
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Common.pdb
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\bin\Debug\Manager.pdb
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.csproj.AssemblyReference.cache
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.csproj.CoreCompileInputs.cache
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.csproj.CopyComplete
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.exe
+C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Audit\obj\Debug\Audit.pdb
