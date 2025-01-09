@@ -20,6 +20,8 @@ namespace Service
         private readonly AESAlgorithm aes = new AESAlgorithm(); // Instanca AES algoritma
         private string sessionId;
 
+
+
         [PrincipalPermission(SecurityAction.Demand,Role = "ModifyBlacklist")]
         public void AddItemToBlacklist(string type, string value)
         {
@@ -36,6 +38,34 @@ namespace Service
             Program.auditProxy.LogEvent((int)AuditEventTypes.ConnectionSuccess, userName);
          
             return sessionId;
+        }
+
+        [PrincipalPermission(SecurityAction.Demand,Role ="ModifyBlacklist")]
+        public string ReadFromBlacklist()
+        {
+            StringBuilder result = new StringBuilder();
+
+            result.AppendLine("\n--- Current Blacklists ---");
+            result.AppendLine("Ports:");
+            foreach (var port in Database.ports)
+            {
+                result.AppendLine($" - {port}");
+            }
+
+            result.AppendLine("IPs:");
+            foreach (var ip in Database.ips)
+            {
+                result.AppendLine($" - {ip}");
+            }
+
+            result.AppendLine("Protocols:");
+            foreach (var protocol in Database.protocols)
+            {
+                result.AppendLine($" - {protocol}");
+            }
+            result.AppendLine();
+
+            return result.ToString();
         }
 
         [PrincipalPermission(SecurityAction.Demand,Role ="RunService")]
@@ -124,7 +154,7 @@ namespace Service
 
         }
 
-        public void StopService(string encryptedIp,string encryptedPort, string encryptedProtocol)
+        public bool StopService(string encryptedIp,string encryptedPort, string encryptedProtocol)
         {
 
             try
@@ -142,10 +172,12 @@ namespace Service
                     host.Close();
                     Database.openHosts.Remove(address);
                     Console.WriteLine("Host with address " + address + " is closed!\n\n");
+                    return true;
                 }
                 else
                 {
                     Console.WriteLine("Host with address " + address + " is not existing!\n\n");
+                    return false;
                 }
 
 
@@ -154,6 +186,7 @@ namespace Service
             catch (Exception ex)
             {
                 Console.WriteLine("Error during decryption or service close: " + ex.Message);
+                return false;
             }
 
 

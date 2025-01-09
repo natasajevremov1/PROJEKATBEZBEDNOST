@@ -98,7 +98,11 @@ namespace Service.Utilities
         {
             try
             {
-                using (var writer = File.AppendText(filePath))
+
+               
+                
+                Console.WriteLine(filePath);
+                using (var writer = File.AppendText(Path.Combine(Environment.CurrentDirectory,filePath)))
                 {
                     writer.WriteLine($"{type}: {value}");
                     Console.WriteLine($"Successfully added {type}: {value} to file.");

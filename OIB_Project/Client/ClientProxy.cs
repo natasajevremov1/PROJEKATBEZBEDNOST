@@ -48,6 +48,20 @@ namespace Client
             }
         }
 
+        public string ReadFromBlacklist()
+        {
+            try
+            {
+               string result = factory.ReadFromBlacklist();
+                return result;
+                
+            }catch(Exception e)
+            {
+                Console.WriteLine("Error : {0}", e.Message);
+                return string.Empty;
+            }
+        }
+
         public void RunService(string ip, string port, string protocol, string userName)
         {
             try
@@ -59,15 +73,16 @@ namespace Client
             }
         }
 
-        public void StopService(string ip, string port, string protocol)
+        public bool StopService(string ip, string port, string protocol)
         {
             try
             {
-                factory.StopService(ip, port, protocol);
+                return factory.StopService(ip, port, protocol);
             }
             catch (Exception e)
             {
                 Console.WriteLine("Error : {0}", e.Message);
+                return false;
             }
         }
     }

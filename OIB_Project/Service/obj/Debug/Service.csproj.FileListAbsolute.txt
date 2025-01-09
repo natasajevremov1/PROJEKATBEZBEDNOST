@@ -29,8 +29,6 @@ C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\b
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Audit.exe
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Common.dll
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Manager.dll
-C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Audit.pdb
-C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Audit.exe.config
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Common.pdb
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Manager.pdb
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.csproj.AssemblyReference.cache
@@ -53,3 +51,5 @@ C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug
 C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.csproj.CopyComplete
 C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.exe
 C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\obj\Debug\Service.pdb
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Audit.pdb
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Service\bin\Debug\Audit.exe.config

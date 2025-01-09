@@ -53,10 +53,10 @@ namespace Client
                                 StopService(proxy, aes);
                                 break;
                             case "4":
-                                 AddToBlackList(proxy,aes);
+                                 AddToBlacklist(proxy);
                                 break;
                             case "5":
-                                // ReadFromBlackList(proxy);
+                                 ReadFromBlackList(proxy);
                                 break;
                             case "6":
                                 Console.WriteLine("Exiting...");
@@ -79,14 +79,21 @@ namespace Client
             }
         }
 
+        private static void ReadFromBlackList(ClientProxy proxy)
+        {
+           string result =  proxy.ReadFromBlacklist();
+            Console.WriteLine(result);
+
+        }
+
         static void Connect(ClientProxy proxy, AESAlgorithm aes)
         {
-            Console.Write("IP :\t");
-            string ip = Console.ReadLine();
-            Console.Write("PORT :\t");
-            string port = Console.ReadLine();
-            Console.Write("PROTOCOL :\t");
-            string protocol = Console.ReadLine();
+            //Console.Write("IP :\t");
+            //string ip = Console.ReadLine();
+            //Console.Write("PORT :\t");
+            //string port = Console.ReadLine();
+            //Console.Write("PROTOCOL :\t");
+            //string protocol = Console.ReadLine();
 
             string userName = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
 
@@ -101,14 +108,14 @@ namespace Client
             }
 
             // Enkriptuj podatke
-            string encryptedIp = aes.Encrypt(ip.Trim(), sessionId);
-            string encryptedPort = aes.Encrypt(port.Trim(), sessionId);
-            string encryptedProtocol = aes.Encrypt(protocol.Trim(), sessionId);
+            //string encryptedIp = aes.Encrypt(ip.Trim(), sessionId);
+            //string encryptedPort = aes.Encrypt(port.Trim(), sessionId);
+            //string encryptedProtocol = aes.Encrypt(protocol.Trim(), sessionId);
 
-            Console.WriteLine("\nEncrypted Data:");
-            Console.WriteLine("Encrypted IP: " + encryptedIp);
-            Console.WriteLine("Encrypted PORT: " + encryptedPort);
-            Console.WriteLine("Encrypted PROTOCOL: " + encryptedProtocol);
+            //Console.WriteLine("\nEncrypted Data:");
+            //Console.WriteLine("Encrypted IP: " + encryptedIp);
+            //Console.WriteLine("Encrypted PORT: " + encryptedPort);
+            //Console.WriteLine("Encrypted PROTOCOL: " + encryptedProtocol);
         }
 
         static void RunService(ClientProxy proxy, AESAlgorithm aes, NetTcpBinding binding)
@@ -186,14 +193,21 @@ namespace Client
             try
             {
                 // Pozivanje metode za zaustavljanje servisa
-                proxy.StopService(encryptedIp, encryptedPort, encryptedProtocol);
+                if(proxy.StopService(encryptedIp, encryptedPort, encryptedProtocol))
+                {
+                    Console.WriteLine("CLIENT: Service stopped successfully!");
+                }
+                else
+                {
+                    Console.WriteLine("CLIENT: Service either not existing or error have occured!");
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-            Console.WriteLine("CLIENT: Service stopped successfully!");
+           
         }
 
         // static bool IsValidIP(string ip)
@@ -208,46 +222,102 @@ namespace Client
         //  return int.TryParse(port, out int portNumber) && portNumber > 0 && portNumber <= 65535;
         //}
         // Funkcija za dodavanje u blacklist
-        static void AddToBlackList(ClientProxy proxy, AESAlgorithm aes)
+        //static void AddToBlackList(ClientProxy proxy, AESAlgorithm aes)
+        //{
+        //    Console.Write("Unesite IP adresu za dodavanje u BlackList: ");
+        //    string ip = Console.ReadLine();
+
+        //    // Ako je IP "localhost", pretvori u odgovarajući IP
+        //    if (ip.Trim().ToLower() == "localhost")
+        //    {
+        //        ip = "127.0.0.1";
+        //    }
+
+        //    // Validacija IP adrese
+        //    if (string.IsNullOrWhiteSpace(ip) || !System.Net.IPAddress.TryParse(ip, out _))
+        //    {
+        //        Console.WriteLine("Nevalidna IP adresa. Pokušajte ponovo.");
+        //        return;
+        //    }
+
+        //    string userName = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
+        //    string sessionId = proxy.Connect(userName);
+
+        //    if (string.IsNullOrEmpty(sessionId))
+        //    {
+        //        Console.WriteLine("Neuspelo uspostavljanje sesije. Izlazim...");
+        //        return;
+        //    }
+
+        //    // Enkriptuj IP adresu
+        //    string encryptedIp = aes.Encrypt(ip.Trim(), sessionId);
+
+        //    // Dodaj u BlackList na serveru
+        //    try
+        //    {
+        //        proxy.AddItemToBlacklist("ip", encryptedIp);
+        //        Console.WriteLine($"IP adresa {ip} uspešno dodata u BlackList.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Greška prilikom dodavanja IP adrese u BlackList: {ex.Message}");
+        //    }
+        //}
+
+        static void AddToBlacklist(ClientProxy proxy)
         {
-            Console.Write("Unesite IP adresu za dodavanje u BlackList: ");
-            string ip = Console.ReadLine();
+            string ipAddress = string.Empty;
+            int port = 0;
+            string protocol = string.Empty;
+            Console.WriteLine("\n1. Dodaj IP adresu");
+            Console.WriteLine("2. Dodaj port");
+            Console.WriteLine("3. Dodaj protokol");
+            Console.WriteLine("4. Izlaz");
+            Console.Write("Izaberite opciju: ");
 
-            // Ako je IP "localhost", pretvori u odgovarajući IP
-            if (ip.Trim().ToLower() == "localhost")
+            string izbor = Console.ReadLine();
+
+            switch (izbor)
             {
-                ip = "127.0.0.1";
+                case "1":
+                    Console.Write("Unesite IP adresu(npr 155.10.0.0): ");
+                     ipAddress = Console.ReadLine();
+                    proxy.AddItemToBlacklist("ip", ipAddress);
+                    Console.WriteLine("IP adresa je uspesno dodata.");
+                    break;
+
+                case "2":
+                    Console.Write("Unesite port: ");
+                    if (int.TryParse(Console.ReadLine(), out port))
+                    {
+                        proxy.AddItemToBlacklist("port", port.ToString());
+                        Console.WriteLine("Port je uspesno dodat.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Neispravan unos. Molimo unesite broj.");
+                    }
+                    break;
+
+                case "3":
+                    Console.Write("Unesite protokol (npr. HTTP, HTTPS, FTP): ");
+                    protocol = Console.ReadLine();
+                    proxy.AddItemToBlacklist("protokol", protocol);
+                    Console.WriteLine("Protokol je uspesno dodat.");
+                    break;
+
+        
+
+                case "4":
+                    
+                    return;
+
+                default:
+                    Console.WriteLine("Nepostojeca opcija. Pokusajte ponovo.");
+                    break;
             }
 
-            // Validacija IP adrese
-            if (string.IsNullOrWhiteSpace(ip) || !System.Net.IPAddress.TryParse(ip, out _))
-            {
-                Console.WriteLine("Nevalidna IP adresa. Pokušajte ponovo.");
-                return;
-            }
-
-            string userName = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
-            string sessionId = proxy.Connect(userName);
-
-            if (string.IsNullOrEmpty(sessionId))
-            {
-                Console.WriteLine("Neuspelo uspostavljanje sesije. Izlazim...");
-                return;
-            }
-
-            // Enkriptuj IP adresu
-            string encryptedIp = aes.Encrypt(ip.Trim(), sessionId);
-
-            // Dodaj u BlackList na serveru
-            try
-            {
-                proxy.AddItemToBlacklist("ip", encryptedIp);
-                Console.WriteLine($"IP adresa {ip} uspešno dodata u BlackList.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Greška prilikom dodavanja IP adrese u BlackList: {ex.Message}");
-            }
+            
         }
 
     }

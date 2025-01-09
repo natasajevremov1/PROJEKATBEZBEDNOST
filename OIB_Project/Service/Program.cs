@@ -96,5 +96,6 @@ namespace Service
                                       new X509CertificateEndpointIdentity(srvCert));
             return new WCFAuditClient(binding, address);
         }
+
     }
 }

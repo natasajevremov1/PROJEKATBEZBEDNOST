@@ -21,8 +21,9 @@ namespace Common
         void AddItemToBlacklist(string type,string value);
 
         [OperationContract]
-        void StopService(string ip, string port, string protocol);
+        bool StopService(string ip, string port, string protocol);
 
-
+        [OperationContract]
+        string ReadFromBlacklist();
     }
 }
