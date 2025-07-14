@@ -20,6 +20,7 @@ namespace Service
         private readonly AESAlgorithm aes = new AESAlgorithm(); // Instanca AES algoritma
         private string sessionId;
 
+        private static string userNameLocalStorage = null;
 
 
         [PrincipalPermission(SecurityAction.Demand,Role = "ModifyBlacklist")]
@@ -36,6 +37,8 @@ namespace Service
             Console.WriteLine("Session id: "+sessionId);
             // string userName = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
             Program.auditProxy.LogEvent((int)AuditEventTypes.ConnectionSuccess, userName);
+
+            userNameLocalStorage = userName;
          
             return sessionId;
         }
@@ -69,7 +72,7 @@ namespace Service
         }
 
         [PrincipalPermission(SecurityAction.Demand,Role ="RunService")]
-        public void RunService(string encryptedIp, string encryptedPort, string encryptedProtocol, string userName)
+        public bool RunService(string encryptedIp, string encryptedPort, string encryptedProtocol, string userName)
         {
 
             try
@@ -85,7 +88,8 @@ namespace Service
 
                 CustomPrincipal principal = Thread.CurrentPrincipal as CustomPrincipal;
                 // string userName = Formatter.ParseName(principal.Identity.Name);
-               
+
+                userNameLocalStorage = userName;
 
                 if (Database.blacklistManager.IsBlacklisted(ip, port, protocol))
                 {
@@ -94,7 +98,7 @@ namespace Service
                         
                         Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceFailed, userName);
                         Console.WriteLine("Access denied: One or more parameters are blacklisted.");
-                        return;
+                        return false;
                     }
                     catch(Exception e)
                     {
@@ -113,7 +117,7 @@ namespace Service
                 if (Database.openHosts.ContainsKey(address))
                 {
                     Console.WriteLine("Host with that address already exists\n\n");
-                    return;
+                    return false;
                 }
 
                 binding.Security.Mode = SecurityMode.Transport;
@@ -130,6 +134,8 @@ namespace Service
                 Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceSuccess, userName);
 
                 Console.WriteLine("Port running");
+
+                return true;
 
                
             }
@@ -148,6 +154,7 @@ namespace Service
                 {
                     Console.WriteLine(e.Message);
                 }
+                return false;
 
                 // Console.WriteLine("Error during decryption or service run: " + ex.Message);
             }
@@ -191,6 +198,20 @@ namespace Service
 
 
             
+        }
+
+        public static void StopServiceBlacklistCorrupted()
+        {
+            string addressOfServiceManager = "net.tcp://localhost:9999/ServiceManagement";
+            ServiceHost SMHost;
+
+            Program.auditProxy.LogEvent((int)AuditEventTypes.ChangedBlacklistFile,userNameLocalStorage);
+
+            if (Database.openHosts.TryGetValue(addressOfServiceManager, out SMHost))
+            {
+                SMHost.Close();
+                Database.openHosts.Remove(addressOfServiceManager);
+            }
         }
     }
 }

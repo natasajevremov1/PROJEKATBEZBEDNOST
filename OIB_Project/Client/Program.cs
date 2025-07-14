@@ -128,11 +128,11 @@ namespace Client
             string protocol = Console.ReadLine();
 
             // Validacija unosa
-            //if (!IsValidIP(ip) || !IsValidPort(port) || string.IsNullOrWhiteSpace(protocol))
-            //{
-              //  Console.WriteLine("Invalid input. Please try again.");
-               // return;
-            //}
+            if (!IsValidIP(ip) || !IsValidPort(port) || string.IsNullOrWhiteSpace(protocol))
+            {
+                Console.WriteLine("Invalid input. Please try again.");
+                return;
+            }
 
             string userName = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
             string sessionId = proxy.Connect(userName);
@@ -149,15 +149,23 @@ namespace Client
             string encryptedProtocol = aes.Encrypt(protocol.Trim(), sessionId);
 
             // Pokretanje servisa
-            proxy.RunService(encryptedIp, encryptedPort, encryptedProtocol, userName);
+            bool flag = proxy.RunService(encryptedIp, encryptedPort, encryptedProtocol, userName);
 
-            // Testiranje veze
-            string testAddress = $"net.{protocol}://{ip}:{port}/TestService";
-            EndpointAddress testEndPointAddress = new EndpointAddress(new Uri(testAddress), EndpointIdentity.CreateUpnIdentity("TestService"));
-            ChannelFactory<ITest> testFactory = new ChannelFactory<ITest>(binding);
-            ITest testProxy = testFactory.CreateChannel(testEndPointAddress);
+            if (flag)
+            {
 
-            Console.WriteLine("CLIENT: Service run successfully!");
+                // Testiranje veze
+                string testAddress = $"net.{protocol}://{ip}:{port}/TestService";
+                EndpointAddress testEndPointAddress = new EndpointAddress(new Uri(testAddress), EndpointIdentity.CreateUpnIdentity("TestService"));
+                ChannelFactory<ITest> testFactory = new ChannelFactory<ITest>(binding);
+                ITest testProxy = testFactory.CreateChannel(testEndPointAddress);
+
+                Console.WriteLine("CLIENT: Service run successfully!");
+            }
+            else
+            {
+                Console.WriteLine("CLIENT: Service is either in use or on blakclist!");
+            }
         }
 
         static void StopService(ClientProxy proxy, AESAlgorithm aes)
@@ -169,12 +177,12 @@ namespace Client
             Console.Write("Enter Protocol: ");
             string protocol = Console.ReadLine();
 
-            // Validacija unosa
-          //  if (!IsValidIP(ip) || !IsValidPort(port) || string.IsNullOrWhiteSpace(protocol))
+            //Validacija unosa
+            //if (!IsValidIP(ip) || !IsValidPort(port) || string.IsNullOrWhiteSpace(protocol))
             //{
-              //  Console.WriteLine("Invalid input. Please try again.");
-                //return;
-        //    }
+            //    Console.WriteLine("Invalid input. Please try again.");
+            //    return;
+            //}
 
             string userName = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
             string sessionId = proxy.Connect(userName);
@@ -210,17 +218,17 @@ namespace Client
            
         }
 
-        // static bool IsValidIP(string ip)
-        //{
-        // Provera validnosti IP adrese (osnovna provera)
-        //  return System.Net.IPAddress.TryParse(ip, out _);
-        // }
+        static bool IsValidIP(string ip)
+        {
+            //Provera validnosti IP adrese(osnovna provera)
+          return System.Net.IPAddress.TryParse(ip, out _);
+        }
 
-        //  static bool IsValidPort(string port)
-        //{
-        // Provera validnosti porta (0-65535)
-        //  return int.TryParse(port, out int portNumber) && portNumber > 0 && portNumber <= 65535;
-        //}
+        static bool IsValidPort(string port)
+        {
+            //Provera validnosti porta(0 - 65535)
+          return int.TryParse(port, out int portNumber) && portNumber > 0 && portNumber <= 65535;
+        }
         // Funkcija za dodavanje u blacklist
         //static void AddToBlackList(ClientProxy proxy, AESAlgorithm aes)
         //{

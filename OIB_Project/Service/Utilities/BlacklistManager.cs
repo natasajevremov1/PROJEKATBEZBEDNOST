@@ -169,7 +169,9 @@ namespace Service.Utilities
                         {
                             if (Database.fileChecksum[i] != help[i])
                             {
-                                Console.WriteLine("Unauthorised blacklist file corrupted, Admin reaction REQUIRED!!!");
+                                Console.WriteLine("Unauthorised blacklist file corrupted, Admin reaction REQUIRED!!!\n----------SERVICE MANAGER IS SHUT DOWN DUE TO SECURITY REASONS!----------");
+                                Common.Audit.ChangedBlacklistFile();
+                                Service.ServiceManagement.StopServiceBlacklistCorrupted();
                                 break;
                             }
                         }

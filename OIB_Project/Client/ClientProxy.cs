@@ -62,14 +62,15 @@ namespace Client
             }
         }
 
-        public void RunService(string ip, string port, string protocol, string userName)
+        public bool RunService(string ip, string port, string protocol, string userName)
         {
             try
             {
-                factory.RunService(ip, port, protocol, userName);
+                return factory.RunService(ip, port, protocol, userName);
             }catch(Exception e)
             {
                 Console.WriteLine("Error : {0}", e.Message);
+                return false;
             }
         }
 
