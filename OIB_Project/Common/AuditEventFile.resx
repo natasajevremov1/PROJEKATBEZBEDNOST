@@ -132,4 +132,7 @@
   <data name="RunServiceSuccess" xml:space="preserve">
     <value>User {0} successfully runned service.</value>
   </data>
+  <data name="StopServiceSuccess" xml:space="preserve">
+    <value>User {0} successfully stopped service.</value>
+  </data>
 </root>

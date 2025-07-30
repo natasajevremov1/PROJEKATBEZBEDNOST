@@ -14,7 +14,9 @@ namespace Common
         RunServiceFailed = 1,
         DOSAttackDetected = 2,
         ChangedBlacklistFile = 3,
-        ConnectionSuccess = 4
+        ConnectionSuccess = 4,
+        StopServiceSuccess = 5
+
     }
     class AuditEvents
     {
@@ -43,6 +45,14 @@ namespace Common
             get
             {
                 return ResourceMgr.GetString(AuditEventTypes.RunServiceSuccess.ToString());
+            }
+        }
+
+        public static string StopServiceSuccess
+        {
+            get
+            {
+                return ResourceMgr.GetString(AuditEventTypes.StopServiceSuccess.ToString());
             }
         }
 

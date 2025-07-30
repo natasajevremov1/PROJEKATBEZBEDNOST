@@ -21,10 +21,10 @@ namespace Common
                 aesAlg.GenerateIV();
                 byte[] iv = aesAlg.IV;  // Dobijanje generisanog IV-a
                 string ivHex = BitConverter.ToString(iv).Replace("-", " ");
-                Console.WriteLine("Generisani IV (hex): " + ivHex);
+                //Console.WriteLine("Generisani IV (hex): " + ivHex);
 
                 // Opcionalno: Prikaz IV-a kao decimalnih vrednosti
-                Console.WriteLine("Generisani IV (decimal): " + string.Join(", ", iv));
+               // Console.WriteLine("Generisani IV (decimal): " + string.Join(", ", iv));
 
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
                 

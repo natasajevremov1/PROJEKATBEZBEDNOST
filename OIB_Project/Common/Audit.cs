@@ -47,6 +47,23 @@ namespace Common
             }
         }
 
+
+        public static void StopServiceSuccess(string userName)
+        {
+            if (customLog != null)
+            {
+                string StopServiceSuccess =
+                    AuditEvents.StopServiceSuccess;
+                string message = String.Format(StopServiceSuccess, userName);
+
+                customLog.WriteEntry(message);
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("Error while trying to write event (eventId = {0}) to event log.", (int)AuditEventTypes.StopServiceSuccess));
+            }
+        }
+
         public static void RunServiceFailed(string userName)
         {
             if (customLog != null)

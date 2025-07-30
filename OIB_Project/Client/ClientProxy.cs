@@ -74,11 +74,11 @@ namespace Client
             }
         }
 
-        public bool StopService(string ip, string port, string protocol)
+        public bool StopService(string ip, string port, string protocol,string userName)
         {
             try
             {
-                return factory.StopService(ip, port, protocol);
+                return factory.StopService(ip, port, protocol,userName);
             }
             catch (Exception e)
             {

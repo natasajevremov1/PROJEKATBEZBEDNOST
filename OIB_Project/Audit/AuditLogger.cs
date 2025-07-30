@@ -101,6 +101,19 @@ namespace Audit
                     }
                     break;
 
+                case 5:
+                    try
+                    {
+                        Common.Audit.StopServiceSuccess(userName);
+                        message = $"User {userName} stopped service successfully.";
+                       
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    break;
+
             }
 
             Console.WriteLine(message);

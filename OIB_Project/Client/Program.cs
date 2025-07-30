@@ -201,7 +201,7 @@ namespace Client
             try
             {
                 // Pozivanje metode za zaustavljanje servisa
-                if(proxy.StopService(encryptedIp, encryptedPort, encryptedProtocol))
+                if(proxy.StopService(encryptedIp, encryptedPort, encryptedProtocol,userName))
                 {
                     Console.WriteLine("CLIENT: Service stopped successfully!");
                 }

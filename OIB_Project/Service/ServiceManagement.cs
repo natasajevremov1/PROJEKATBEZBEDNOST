@@ -77,7 +77,7 @@ namespace Service
 
             try
             {
-                 // Dekriptuji podatke
+                // Dekriptuji podatke
                 string ip = aes.Decrypt(encryptedIp, sessionId);
                 string port = aes.Decrypt(encryptedPort, sessionId);
                 string protocol = aes.Decrypt(encryptedProtocol, sessionId);
@@ -95,12 +95,12 @@ namespace Service
                 {
                     try
                     {
-                        
+
                         Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceFailed, userName);
                         Console.WriteLine("Access denied: One or more parameters are blacklisted.");
                         return false;
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
                     }
@@ -108,10 +108,7 @@ namespace Service
                     // Console.WriteLine("Access denied: One or more parameters are blacklisted.");
                     // return;
                 }
-           
                 
-
-                NetTcpBinding binding = new NetTcpBinding();
                 string address = $"net.{protocol}://{ip}:{port}/TestService";
 
                 if (Database.openHosts.ContainsKey(address))
@@ -120,8 +117,14 @@ namespace Service
                     return false;
                 }
 
+                NetTcpBinding binding = new NetTcpBinding();
+
+
+
                 binding.Security.Mode = SecurityMode.Transport;
-                binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
+                
+                    binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
+                
                 binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
 
                 ServiceHost host = new ServiceHost(typeof(TestService));
@@ -161,7 +164,7 @@ namespace Service
 
         }
 
-        public bool StopService(string encryptedIp,string encryptedPort, string encryptedProtocol)
+        public bool StopService(string encryptedIp,string encryptedPort, string encryptedProtocol, string userName)
         {
 
             try
@@ -178,6 +181,7 @@ namespace Service
                 {
                     host.Close();
                     Database.openHosts.Remove(address);
+                    Program.auditProxy.LogEvent((int)AuditEventTypes.StopServiceSuccess, userName);
                     Console.WriteLine("Host with address " + address + " is closed!\n\n");
                     return true;
                 }

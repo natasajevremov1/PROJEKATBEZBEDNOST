@@ -12,14 +12,6 @@ D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.Generat
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.dll
 D:\Desktop\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.pdb
-C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\bin\Debug\Common.dll
-C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\bin\Debug\Common.pdb
-C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.AuditEventFile.resources
-C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.RolesConfigFile.resources
-C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.GenerateResource.cache
-C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
-C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.dll
-C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.pdb
 C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\bin\Debug\Common.dll
 C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\bin\Debug\Common.pdb
 C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.AuditEventFile.resources
@@ -29,4 +21,12 @@ C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\
 C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.dll
 C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.pdb
 C:\Users\Win10\Documents\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\bin\Debug\Common.dll
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\bin\Debug\Common.pdb
 C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.AuditEventFile.resources
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.RolesConfigFile.resources
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.GenerateResource.cache
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.dll
+C:\Users\User\OneDrive\Dokumenti\GitHub\PROJEKATBEZBEDNOST\OIB_Project\Common\obj\Debug\Common.pdb
